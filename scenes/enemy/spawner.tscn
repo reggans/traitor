@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhuomi4tj0c6k"]
+
+[ext_resource type="Script" uid="uid://bcg3iqtdofpsw" path="res://scripts/spawner.gd" id="1_ug7rb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_726qn"]
+size = Vector2(83, 60)
+
+[node name="Spawner" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_ug7rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 1)
+shape = SubResource("RectangleShape2D_726qn")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

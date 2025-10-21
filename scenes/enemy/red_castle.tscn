@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://g5t3jild30br"]
+
+[ext_resource type="Script" uid="uid://cqtq7m3antfob" path="res://scripts/red/red_castle.gd" id="1_diaxn"]
+[ext_resource type="Texture2D" uid="uid://djbbyi8pivih7" path="res://sprites/enemy/red/Castle.png" id="1_rphyh"]
+[ext_resource type="PackedScene" uid="uid://bhuomi4tj0c6k" path="res://scenes/enemy/spawner.tscn" id="3_mjtum"]
+[ext_resource type="PackedScene" uid="uid://cxp45x3bj1ce" path="res://scenes/enemy/red.tscn" id="4_mft7u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_diaxn"]
+size = Vector2(276, 175)
+
+[node name="RedCastle" type="StaticBody2D" groups=["Red"]]
+script = ExtResource("1_diaxn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rphyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Red"]]
+position = Vector2(0, 20.5)
+shape = SubResource("RectangleShape2D_diaxn")
+
+[node name="AttackImmunityTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Spawner" parent="." instance=ExtResource("3_mjtum")]
+position = Vector2(-1, 127)
+mob_scene = ExtResource("4_mft7u")
